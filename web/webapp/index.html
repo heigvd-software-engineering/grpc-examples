@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="description" content="A grpc web example">
+  <meta name="keywords" content="grpc web example">
+  <meta charset="utf-8">
+  <title>grpc-web example</title>
+</head>
+<body>
+  <script type="text/javascript" src="lib/grpc.js"></script>
+  <div>
+    <h1>Welcome to this little grpc example</h1>
+    <form name="myform" action="javascript:window.grpc.greeting(lastname.value)">
+      <label for="lastname">Votre nom</label>
+      <input name="lastname" id="lastname"></input>
+      <button type="submit">Envoyer</button>
+      <span name="hello" id="hello"></span>
+    </form>
+  </div>
+</body>
+</html>
