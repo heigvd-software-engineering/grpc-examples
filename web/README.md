@@ -3,7 +3,36 @@
 ## prerequisite
 - [envoy cli](https://www.envoyproxy.io/docs/envoy/latest/start/install)
 - [protoc cli](https://github.com/protocolbuffers/protobuf) - to edit
-- npm
+- [npm](https://docs.npmjs.com/cli/v7/configuring-npm/install)
+- [make](https://www.w3schools.in/cplusplus/install)
+
+## Install gRPC web plugin
+
+Compile the plugin.
+
+```sh
+cd ./plugin
+make install-plugin
+```
+> This will allow protoc to compile for gRPC web
+
+## Compile
+
+You will need to compile the [proto](./proto/) files.
+
+1) your grpc objects
+```sh
+protoc -I=./proto/ helloworld.proto \
+  --js_out=import_style=commonjs:./src
+```
+
+2) your grpc stub
+```sh
+protoc -I=./proto/ helloworld.proto \
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src
+```
+
+> `-I` is the option to specify the folder where your proto is stored.
 
 ## Run
 
