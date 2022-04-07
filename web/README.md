@@ -2,7 +2,7 @@
 
 ## prerequisite
 - [envoy cli](https://www.envoyproxy.io/docs/envoy/latest/start/install)
-- [protoc cli](https://github.com/protocolbuffers/protobuf) - to edit
+- [protoc cli](https://github.com/protocolbuffers/protobuf)
 - [npm](https://docs.npmjs.com/cli/v7/configuring-npm/install)
 - [make](https://www.w3schools.in/cplusplus/install)
 
