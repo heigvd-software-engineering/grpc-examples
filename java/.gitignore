@@ -1,0 +1,3 @@
+# Maven specific stuff
+target/
+.mvn/
