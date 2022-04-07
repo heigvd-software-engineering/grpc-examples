@@ -1,6 +1,7 @@
-# GRPC-WEB example
+# gRPC-WEB example
 
-## prerequisite
+## Prerequisite
+
 - [envoy cli](https://www.envoyproxy.io/docs/envoy/latest/start/install)
 - [protoc cli](https://github.com/protocolbuffers/protobuf)
 - [npm](https://docs.npmjs.com/cli/v7/configuring-npm/install)
@@ -74,3 +75,7 @@ npx webpack src/grpc-client.js
 ```
 
 Your application is ready!
+
+## Sources
+
+- [gRPC offical website](https://grpc.io/docs/platforms/web/quickstart/)
