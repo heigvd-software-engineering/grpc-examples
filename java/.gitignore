@@ -1,3 +1,7 @@
 # Maven specific stuff
 target/
 .mvn/
+
+# IDE-specific stuff:
+.idea/*
+*.iml
