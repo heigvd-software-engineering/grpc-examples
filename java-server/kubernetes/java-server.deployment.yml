@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: java
-        image: myimage
+        image: registry.gitlab.com/heigvd-software-engineering/grpc-example/java-server
         ports:
         - containerPort: 80
