@@ -57,13 +57,13 @@ You need to recompile your proto:
 1) your grpc objects
 ```sh
 protoc -I=./proto/ helloworld.proto \
-  --js_out=import_style=commonjs:./src
+  --js_out=import_style=commonjs:./webapp/src
 ```
 
 2) your grpc stub
 ```sh
 protoc -I=./proto/ helloworld.proto \
-  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./webapp/src
 ```
 
 After you can use the interface ([hellowold_grpc_web_pb.js](./webapp/src/helloworld_grpc_web_pb.js) and [helloworld_pb.js](./webapp/src/helloworld_pb.js)) generated in the src folder in the [grpc-client.js](./webapp/src/grpc-client.js).
