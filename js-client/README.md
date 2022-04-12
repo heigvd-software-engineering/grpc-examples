@@ -14,6 +14,7 @@ Compile the plugin.
 ```sh
 cd ./plugin
 make install-plugin
+cd ..
 ```
 > This will allow protoc to compile for gRPC web
 
@@ -24,13 +25,13 @@ You will need to compile the [proto](./proto/) files.
 1) your grpc objects
 ```sh
 protoc -I=./proto/ helloworld.proto \
-  --js_out=import_style=commonjs:./src
+  --js_out=import_style=commonjs:./webapp/src
 ```
 
 2) your grpc stub
 ```sh
 protoc -I=./proto/ helloworld.proto \
-  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./webapp/src
 ```
 
 > `-I` is the option to specify the folder where your proto is stored.
