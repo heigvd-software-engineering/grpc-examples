@@ -6,7 +6,7 @@ metadata:
     app: java
     tier: api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java
@@ -19,4 +19,4 @@ spec:
       - name: java
         image: registry.gitlab.com/heigvd-software-engineering/grpc-example/java-server
         ports:
-        - containerPort: 80
+        - containerPort: 9090
