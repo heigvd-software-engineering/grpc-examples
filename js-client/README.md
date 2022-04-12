@@ -41,9 +41,15 @@ protoc -I=./proto/ helloworld.proto \
 To run the grpc-web application you will need to follow this steps:
 
 1) Have a [grpc server](../java/src//main/java/ch/heigvd/java/server/HelloWorldServer.java) running
+2) Bundle your js files to be used in your index.html
+```sh
+cd webapp
+npx webpack src/grpc-client
+cd ..
+```
 2) Run an [envoy proxy](./envoy/envoy.yaml) (check the configuration match your server ports etc)
 ```sh
-envoy -c ../envoy/envoy.yaml
+envoy -c ./envoy/envoy.yaml
 ```
 3) open the [index.html](./webapp/index.html) in your browser.
 
