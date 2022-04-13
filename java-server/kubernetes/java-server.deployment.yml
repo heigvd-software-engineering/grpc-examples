@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: java-server
   labels:
-    app: java
+    app: java-server
     tier: api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: java
+      app: java-server
   template:
     metadata:
       labels:
-        app: java
+        app: java-server
     spec:
       containers:
-      - name: java
+      - name: java-server
         image: registry.gitlab.com/heigvd-software-engineering/grpc-example/java-server
         ports:
         - containerPort: 9090
