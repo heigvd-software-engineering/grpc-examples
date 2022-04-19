@@ -19,4 +19,4 @@ spec:
       - name: js-client
         image: registry.gitlab.com/heigvd-software-engineering/grpc-example/js-client
         ports:
-        - containerPort: 3000
+        - containerPort: 80

@@ -6,7 +6,7 @@ metadata:
     app: java-server
     tier: api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-server

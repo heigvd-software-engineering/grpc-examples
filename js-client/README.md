@@ -93,6 +93,10 @@ npx webpack src/grpc-client.js
 
 Your application is ready!
 
+## Deployment on kubernetes
+
+Follow this [documentation](./kubernetes/README.md).
+
 ## Sources
 
 - [gRPC offical website](https://grpc.io/docs/platforms/web/quickstart/)
