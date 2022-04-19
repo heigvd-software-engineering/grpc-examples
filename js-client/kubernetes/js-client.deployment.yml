@@ -18,5 +18,6 @@ spec:
       containers:
       - name: js-client
         image: registry.gitlab.com/heigvd-software-engineering/grpc-example/js-client
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

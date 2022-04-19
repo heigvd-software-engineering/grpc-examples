@@ -33,6 +33,8 @@ In a second terminal you will need to get the vm url and ports with:
 minikube service js-client-envoy-svc --url
 ```
 
+Change the `var helloworldService = new GreeterClient('http://localhost:8080');` with the correct ip and port.
+
 - Build your app with webpack the [webapp](../webapp/) folder
 
 ```sh
@@ -55,6 +57,8 @@ docker build -t <tag of your container> .
 ```sh
 minikube image load <tag of your container>
 ```
+
+And change the [deployment](js-client.deployment.yml) imagePullPolicy from `IfNotPresent` to `Never`
 
 - Change the [js-client.deployment.yml](js-client.deployment.yml) to the correct image
 
