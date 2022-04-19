@@ -11,9 +11,5 @@ spec:
     name: js-client
     port: 8080
     targetPort: 8080
-  - protocol: TCP
-    name: server
-    port: 9090
-    targetPort: 9090
   selector:
     app: js-client-envoy
