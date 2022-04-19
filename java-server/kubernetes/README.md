@@ -15,6 +15,12 @@ brew install hyperkit
 
 - [Build the app](../README.md)
 
+- Deploy the service and deployment
+
+```sh
+kubectl apply -f java-server.service.yml -f java-server.deployment.yml
+```
+
 - Start minikube or connect your kubectl to your cluster
 
 ```sh
