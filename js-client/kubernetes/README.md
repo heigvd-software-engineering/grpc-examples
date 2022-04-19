@@ -63,7 +63,7 @@ minikube image load <tag of your container>
 - Deploy the envoy and js-client deployments and services from [kubernetes folder](./)
 
 ```sh
-kubectl apply -f envoy.deployment.yml -f envoy.service.yml -f js-client.deployment.yml -f js-client.service.yml
+kubectl apply -f js-client.deployment.yml -f js-client.service.yml
 ```
 
 You should see your deployments, pods and services now.
