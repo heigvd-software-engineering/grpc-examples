@@ -5,6 +5,11 @@ This is the explaination how to deploy gRPC service on kubernetes.
 ## Setup with minikube (local)
 
 - Install [minikube](https://formulae.brew.sh/formula/minikube)
+- Install hyperkit driver
+
+```sh
+brew install hyperkit
+```
 
 ### Deploy deployments and services
 
