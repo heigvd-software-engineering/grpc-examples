@@ -51,6 +51,10 @@ You have now a grpc server running!
 > You can now setup a client like the [js-client](../js-client)
 > Note: Postman now support grpc to do some testing
 
+## Deployment on kubernetes
+
+Follow this [documentation](./kubernetes/README.md).
+
 ## Sources
 
 - [gRPC offical website](https://grpc.io/docs/languages/java/)
