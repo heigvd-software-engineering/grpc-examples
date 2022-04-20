@@ -16,6 +16,9 @@
     <version.lib.protoc>3.19.4</version.lib.protoc>
     <version.lib.gson>2.8.9</version.lib.gson>
     <version.lib.tomcat>6.0.53</version.lib.tomcat>
+    <version.mvn-assembly-plugin>3.3.0</version.mvn-assembly-plugin>
+    <version.os-maven-plugin>1.6.2</version.os-maven-plugin>
+    <version.protobuf-maven-plugin>0.6.1</version.protobuf-maven-plugin>
   </properties>
 
   <dependencyManagement>
@@ -68,14 +71,14 @@
       <extension>
         <groupId>kr.motd.maven</groupId>
         <artifactId>os-maven-plugin</artifactId>
-        <version>1.6.2</version>
+        <version>${version.os-maven-plugin}</version>
       </extension>
     </extensions>
     <plugins>
       <plugin>
         <groupId>org.xolstice.maven.plugins</groupId>
         <artifactId>protobuf-maven-plugin</artifactId>
-        <version>0.6.1</version>
+        <version>${version.protobuf-maven-plugin}</version>
         <configuration>
           <protocArtifact>com.google.protobuf:protoc:${version.lib.protoc}:exe:${os.detected.classifier}</protocArtifact>
           <pluginId>grpc-java</pluginId>
@@ -87,6 +90,27 @@
               <goal>compile</goal>
               <goal>compile-custom</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${version.mvn-assembly-plugin}</version>
+        <executions>
+          <execution>
+            <id>make-zip</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <finalName>grpc-java-server</finalName>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>src/assembly/assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
           </execution>
         </executions>
       </plugin>

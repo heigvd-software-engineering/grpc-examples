@@ -69,6 +69,6 @@ public class HelloWorldServerTest {
     ch.heigvd.java.helloworld.HelloReply reply =
         blockingStub.sayHello(ch.heigvd.java.helloworld.HelloRequest.newBuilder().setName( "test name").build());
 
-    assertEquals("Hello test name", reply.getMessage());
+    assertEquals("Hello test name. The world is greeting you, young padawan.", reply.getMessage());
   }
 }

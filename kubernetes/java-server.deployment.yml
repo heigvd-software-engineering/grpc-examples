@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-server
+  labels:
+    app: java-server
+    tier: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-server
+  template:
+    metadata:
+      labels:
+        app: java-server
+    spec:
+      containers:
+      - name: java-server
+        image: java-server
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9090

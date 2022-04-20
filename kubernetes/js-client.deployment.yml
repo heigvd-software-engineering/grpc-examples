@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-client
+  labels:
+    app: js-client
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: js-client
+  template:
+    metadata:
+      labels:
+        app: js-client
+    spec:
+      containers:
+      - name: js-client
+        image: js-client
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
