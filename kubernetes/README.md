@@ -36,9 +36,72 @@ minikube tunnel
 
 > This will dynamically expose new services .
 
+## Application architecture
+
+### Java server with javascript client
+
+```mermaid
+flowchart LR
+    subgraph java-server
+    grpc-server
+    end
+    subgraph js-client
+    nginx-server
+    end
+    subgraph envoy
+    proxy
+    end
+    subgraph browser
+    grpc-web
+    end
+    browser -- GET --> js-client
+    js-client -- index.html --> browser
+    browser -- gRPC-web request --> envoy
+    envoy -- gRPC request --> java-server
+    java-server -- gRPC response --> envoy
+    envoy -- gRPC-web response --> browser
+```
+
+## Kubernetes architecture
+
+```mermaid
+flowchart LR
+    subgraph server
+      subgraph pod-server
+      java-server
+      end
+    java-server-svc --> java-server
+    java-server --> java-server-svc
+    end
+    subgraph client
+      subgraph pod-client
+      js-client
+      end
+    js-client-svc --> js-client
+    js-client --> js-client-svc
+    end
+    subgraph envoy-proxy
+      subgraph pod-proxy
+      envoy
+      end
+    envoy --> envoy-svc
+
+    envoy-svc --> envoy
+    end
+    subgraph browser
+    grpc-client.js
+    end
+    browser -- GET --> js-client-svc
+    js-client-svc -- index.html --> browser
+    grpc-client.js -- gRPC-web request --> envoy-svc
+    envoy-svc -- gRPC request --> java-server-svc
+    java-server-svc -- gRPC response --> envoy-svc
+    envoy-svc -- gRPC-web response --> grpc-client.js
+```
+
 ## Deployments
 
-## Java server
+### Java server
 
 - [Build the app](../java-server/README.md).
 
@@ -84,7 +147,7 @@ kubernetes            ClusterIP      10.96.0.1        <none>        443/TCP     
 
 You can now communicate with this service from your local application. In this example: *localhost:9090*.
 
-## Javascript client
+### Javascript client
 
 - Create a gRPC server deployment and service like the [java-server](#java-server).
 
