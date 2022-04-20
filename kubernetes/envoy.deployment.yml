@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: js-client-envoy
+  name: envoy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: js-client-envoy
+      app: envoy
   template:
     metadata:
       labels:
-        app: js-client-envoy
+        app: envoy
     spec:
       containers:
-      - name: js-client-envoy
-        image: registry.gitlab.com/heigvd-software-engineering/grpc-example/js-client-envoy
+      - name: envoy
+        image: envoy-grpc-web-proxy
+        imagePullPolicy: Never
         ports:
-        - name: js-client
+        - name: client
           containerPort: 8080
         - name: server
           containerPort: 9090

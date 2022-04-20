@@ -1,10 +1,12 @@
 # gRPC Java example
 
+Java-server is a demo of a server implementation of gRPC in Java.
+
 ## Prerequisite
 
 - Java 17
-- [protoc cli](https://github.com/protocolbuffers/protobuf) - to edit
 - Maven
+- [protoc cli](https://github.com/protocolbuffers/protobuf)
 
 ## Compile gRPC proto file
 
@@ -18,9 +20,7 @@ mvn clean install
 
 ## Run the app
 
-You can run the app in your favorite IDE or you can run the compile application.
-
-The `mvn clean install` generate a zip folder in your target folder.
+The `mvn clean install` command generates a zip folder in your target folder.
 Unzip the zip folder:
 
 ```sh
@@ -28,16 +28,12 @@ unzip target/grpc-java-server.zip
 ```
 
 Run the script to run the app:
-For MacOs/Linux:
 
 ```sh
 ./target/grpc-java-server/bin/grpc-java-server
 ```
 
-For Windows:
-```sh
-bat ./target/grpc-java-server/bin/grpc-java-server.bat
-```
+> If you are on Windows, we suggest you to use [WSL](https://docs.microsoft.com/en-us/windows/wsl/about)
 
 You should see:
 ```sh
@@ -48,12 +44,12 @@ INFO: Server started, listening on 9090
 You have now a grpc server running!
 
 > You are not able to communicate with this server without a client.
-> You can now setup a client like the [js-client](../js-client)
+> You can use the client available here [js-client](../js-client)
 > Note: Postman now support grpc to do some testing
 
 ## Deployment on kubernetes
 
-Follow this [documentation](./kubernetes/README.md).
+Follow this [documentation](../kubernetes/README.md).
 
 ## Sources
 

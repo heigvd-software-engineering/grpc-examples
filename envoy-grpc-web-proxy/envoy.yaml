@@ -5,7 +5,7 @@ admin:
 
 static_resources:
   listeners:
-  - name: js-client-listner
+  - name: js-client-listener
     address:
       socket_address: { address: 0.0.0.0, port_value: 8080 }
     filter_chains:

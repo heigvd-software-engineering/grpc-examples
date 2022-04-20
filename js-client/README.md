@@ -1,5 +1,7 @@
 # gRPC-WEB example
 
+Js-client is a demo client to communicate with a gRPC server over gRPC-web.
+
 ## Prerequisite
 
 - [envoy cli](https://www.envoyproxy.io/docs/envoy/latest/start/install)
@@ -38,7 +40,7 @@ protoc -I=./proto/ helloworld.proto \
 
 ## Run
 
-To run the grpc-web application you will need to follow this steps:
+To run the grpc-web application you will need to follow these steps:
 
 1) Have a [grpc server](../java/src//main/java/ch/heigvd/java/server/HelloWorldServer.java) running
 
@@ -46,6 +48,31 @@ To run the grpc-web application you will need to follow this steps:
 ```sh
 npm i
 ```
+
+3) You need to compile your proto file:
+
+- your grpc objects
+
+```sh
+protoc -I=./proto/ helloworld.proto \
+  --js_out=import_style=commonjs:./webapp/src
+```
+
+- your grpc stub
+
+```sh
+protoc -I=./proto/ helloworld.proto \
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./webapp/src
+```
+
+After that you can use the interface ([hellowold_grpc_web_pb.js](./webapp/src/helloworld_grpc_web_pb.js) and [helloworld_pb.js](./webapp/src/helloworld_pb.js)) generated in the src folder in the [grpc-client.js](./webapp/src/grpc-client.js).
+
+> Don't forgot to export the function you want to call in your [index.html](./webapp/index.html).
+
+> Every time you change the proto file you will need to redo this step
+
+You will need to bundle your code with webpack to be able to use it in the index.html.
+
 
 3) Bundle your js files to be used in your index.html
 ```sh
@@ -56,46 +83,16 @@ cd ..
 
 > This will bundle your js file in a grpc.js file in the lib folder
 
-4) Run an [envoy proxy](./envoy/envoy.yaml) (check the configuration match your server ports etc)
+4) Run an [envoy proxy](./envoy/envoy.yaml) (check the configuration match your server ports)
 ```sh
 envoy -c ./envoy/envoy.yaml
 ```
 
 5) open the [index.html](./webapp/index.html) in your browser.
 
-## To edit
-
-### Proto change
-
-If you change your proto definition, you will need to change it also in your server.
-
-You need to recompile your proto:
-1) your grpc objects
-```sh
-protoc -I=./proto/ helloworld.proto \
-  --js_out=import_style=commonjs:./webapp/src
-```
-
-2) your grpc stub
-```sh
-protoc -I=./proto/ helloworld.proto \
-  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./webapp/src
-```
-
-After you can use the interface ([hellowold_grpc_web_pb.js](./webapp/src/helloworld_grpc_web_pb.js) and [helloworld_pb.js](./webapp/src/helloworld_pb.js)) generated in the src folder in the [grpc-client.js](./webapp/src/grpc-client.js).
-> Don't forgot to export the function you want to call in your [index.html](./webapp/index.html).
-
-You will need to bundle your code with webpack to be able to use it in the index.html.
-
-```sh
-npx webpack src/grpc-client.js
-```
-
-Your application is ready!
-
 ## Deployment on kubernetes
 
-Follow this [documentation](./kubernetes/README.md).
+Follow this [documentation](../kubernetes/README.md).
 
 ## Sources
 

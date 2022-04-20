@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: js-client-envoy-svc
+  name: envoy-svc
   labels:
-    app: js-client-envoy
+    app: envoy
 spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    name: js-client
+    name: client
     port: 8080
     targetPort: 8080
   selector:
-    app: js-client-envoy
+    app: envoy
