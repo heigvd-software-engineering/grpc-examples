@@ -1,6 +1,6 @@
 # Kubernetes
 
-This document explains how to deploy the java-server gRPC service on Kubernetes
+This document explains how to deploy the java-server gRPC service on Kubernetes.
 
 ## Prerequisite
 
@@ -14,45 +14,45 @@ This document explains how to deploy the java-server gRPC service on Kubernetes
 
 ## Setup minikube (local)
 
-- Install [minikube](https://formulae.brew.sh/formula/minikube)
+- Install [minikube](https://formulae.brew.sh/formula/minikube).
 
 ```sh
 brew install minikube
 ```
 
-> Use the default docker driver
+> Use the default docker driver.
 
-- Start minikube or connect your kubectl to your cluster
+- Start minikube or connect your kubectl to your cluster.
 
 ```sh
 minikube start
 ```
 
-- Expose the services to your local machine in a separate terminal
+- Expose the services to your local machine in a separate terminal.
 
 ```sh
 minikube tunnel
 ```
 
-> This will dynamically expose new services 
+> This will dynamically expose new services .
 
 ## Deployments
 
 ## Java server
 
-- [Build the app](../java-server/README.md)
+- [Build the app](../java-server/README.md).
 
-- Build the *java server* [Docker image](../java-server/Dockerfile)
+- Build the *java server* [Docker image](../java-server/Dockerfile).
 
 ```sh
 docker build -t java-server ../java-server
 ```
 
-> Verify that the image name in the [java-server.deployment.yml](java-server.deployment.yml) is the same as you the tag define in the docker build command
+> Verify that the image name in the [java-server.deployment.yml](java-server.deployment.yml) is the same as you the tag define in the docker build command.
 
-> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*
+> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*.
 
-- Load the image into minikube
+- Load the image into minikube.
 
 ```sh
 minikube image load java-server
@@ -60,13 +60,13 @@ minikube image load java-server
 
 > This command can take some time.
 
-- Create the service and deployment with the configurations files
+- Create the service and deployment with the configurations files.
 
 ```sh
 kubectl apply -f java-server.service.yml -f java-server.deployment.yml
 ```
 
-> Your service will already be expose because you have a tunnel open
+> Your service will already be expose because you have a tunnel open.
 
 You can now get the service informations and see the external IP and port to access it.
 
@@ -82,23 +82,23 @@ java-server-svc       LoadBalancer   10.100.214.221   127.0.0.1     9090:31723/T
 kubernetes            ClusterIP      10.96.0.1        <none>        443/TCP          21m
 ```
 
-You can now communicate with this service from your local application. In this example: *localhost:9090*
+You can now communicate with this service from your local application. In this example: *localhost:9090*.
 
 ## Javascript client
 
-- Create a gRPC server deployment and service like the [java-server](#java-server)
+- Create a gRPC server deployment and service like the [java-server](#java-server).
 
-- Build the envoy Docker image
+- Build the envoy Docker image.
 
 ```sh
 docker build -t envoy-grpc-web-proxy ../envoy-grpc-web-proxy
 ```
 
-> Verify that the image name in the [envoy.deployment.yml](envoy.deployment.yml) is the same as you the tag define in the docker build command
+> Verify that the image name in the [envoy.deployment.yml](envoy.deployment.yml) is the same as you the tag define in the docker build command.
 
-> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*
+> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*.
 
-- Load the image into minikube
+- Load the image into minikube.
 
 ```sh
 minikube image load envoy-grpc-web-proxy
@@ -106,9 +106,9 @@ minikube image load envoy-grpc-web-proxy
 
 > This command can take some time.
 
-- Create the envoy proxy deployment and service
+- Create the envoy proxy deployment and service.
 
-> Verify that the port setup in the [envoy.yaml](../envoy-grpc-web-proxy/envoy.yaml) is correct
+> Verify that the port setup in the [envoy.yaml](../envoy-grpc-web-proxy/envoy.yaml) is correct.
 
 ```sh
 kubectl apply -f envoy.deployment.yml -f envoy.service.yml
@@ -127,19 +127,19 @@ java-server-svc   LoadBalancer   10.96.99.227   127.0.0.1     9090:31419/TCP   1
 kubernetes        ClusterIP      10.96.0.1      <none>        443/TCP          15m
 ```
 
-> If you don't see any external IP, this mean you forgot to open the minikube tunnel
+> If you don't see any external IP, this mean you forgot to open the minikube tunnel.
 
-- [Build the app](../js-client/README.md)
+- [Build the app](../js-client/README.md).
 
-- Build the js-client image
+- Build the js-client image.
 
 ```sh
 docker build -t js-client ../js-client
 ```
 
-> Verify that the image name in the [js-client.deployment.yml](js-client.deployment.yml) is the same as you the tag define in the docker build command
+> Verify that the image name in the [js-client.deployment.yml](js-client.deployment.yml) is the same as you the tag define in the docker build command.
 
-> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*
+> If you use a external image or if you push your image on a external server, you need to change the *imagePullPolicy* to *IfNotPresent*.
 
 - Load the image into minikube
 
@@ -149,7 +149,7 @@ minikube image load js-client
 
 > This command can take some time.
 
-- Create the js-client deployment and service
+- Create the js-client deployment and service.
 
 ```sh
 kubectl apply -f js-client.deployment.yml -f js-client.service.yml
@@ -170,7 +170,7 @@ kubectl get services
 ```
 
 You can now access your js-client through the service *js-client-svc* ip and port.
-The client will communicate with the envoy proxy and that will transform http/1 into http/2 request to be able to communicate with the server
+The client will communicate with the envoy proxy and that will transform http/1 into http/2 request to be able to communicate with the server.
 
 ## Clean up
 

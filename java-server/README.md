@@ -33,7 +33,7 @@ Run the script to run the app:
 ./target/grpc-java-server/bin/grpc-java-server
 ```
 
-> If you are on Windows, we suggest you to use [WSL](https://docs.microsoft.com/en-us/windows/wsl/about)
+> If you are on Windows, we suggest you to use [WSL](https://docs.microsoft.com/en-us/windows/wsl/about).
 
 You should see:
 ```sh
@@ -44,8 +44,8 @@ INFO: Server started, listening on 9090
 You have now a grpc server running!
 
 > You are not able to communicate with this server without a client.
-> You can use the client available here [js-client](../js-client)
-> Note: Postman now support grpc to do some testing
+> You can use the client available here [js-client](../js-client).
+> Note: Postman now support grpc to do some testing.
 
 ## Deployment on kubernetes
 
@@ -53,4 +53,4 @@ Follow this [documentation](../kubernetes/README.md).
 
 ## Sources
 
-- [gRPC offical website](https://grpc.io/docs/languages/java/)
+- [gRPC offical website](https://grpc.io/docs/languages/java/).
