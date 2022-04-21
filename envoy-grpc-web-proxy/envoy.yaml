@@ -23,7 +23,7 @@ static_resources:
               routes:
               - match: { prefix: "/" }
                 route:
-                  cluster: java-server-svc
+                  cluster: java-server-envoy-svc
                   timeout: 0s
                   max_stream_duration:
                     grpc_timeout_header_max: 0s
@@ -39,17 +39,17 @@ static_resources:
           - name: envoy.filters.http.cors
           - name: envoy.filters.http.router
   clusters:
-  - name: java-server-svc
+  - name: java-server-envoy-svc
     connect_timeout: 0.25s
     type: logical_dns
     http2_protocol_options: {}
     lb_policy: round_robin
     load_assignment:
-      cluster_name: java-server-svc
+      cluster_name: java-server-envoy-svc
       endpoints:
         - lb_endpoints:
             - endpoint:
                 address:
                   socket_address:
-                    address: java-server-svc
+                    address: 127.0.0.1
                     port_value: 9090

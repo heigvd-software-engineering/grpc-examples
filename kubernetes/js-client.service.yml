@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    port: 3000
+    port: 80
     targetPort: 80
   selector:
     app: js-client
