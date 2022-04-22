@@ -3,3 +3,7 @@
 # IDE-specific stuff:
 .idea/*
 *.iml
+
+target/
+.mvn/
+node_modules/
