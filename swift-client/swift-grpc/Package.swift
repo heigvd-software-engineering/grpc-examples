@@ -41,10 +41,6 @@ let packageDependencies: [Package.Dependency] = [
         url: "https://github.com/apple/swift-log.git",
         from: "1.4.0"
     ),
-    .package(
-        url: "https://github.com/apple/swift-argument-parser.git",
-        from: "1.0.0"
-    ),
 ].appending(
     .package(
         url: "https://github.com/apple/swift-nio-ssl.git",
@@ -63,12 +59,9 @@ extension Target.Dependency {
     
     // Target dependencies; internal
     static let helloWorldModel: Self = .target(name: "HelloWorldModel")
+    static let helloWorldClient: Self = .target(name: "HelloWorldClient")
     
     // Product dependencies
-    static let argumentParser: Self = .product(
-        name: "ArgumentParser",
-        package: "swift-argument-parser"
-    )
     static let nio: Self = .product(name: "NIO", package: "swift-nio")
     static let nioConcurrencyHelpers: Self = .product(
         name: "NIOConcurrencyHelpers",
@@ -154,7 +147,6 @@ extension Target {
             .helloWorldModel,
             .nioCore,
             .nioPosix,
-            .argumentParser,
         ],
         path: "Sources/HelloWorld/Client"
     )
@@ -172,6 +164,7 @@ extension Product {
         name: cgrpcZlibProductName,
         targets: [cgrpcZlibTargetName]
     )
+    static let helloWorldClient: Product = .library(name: "HelloWorldClient", targets: ["HelloWorldClient"])
     
     static let protocGenGRPCSwift: Product = .executable(
         name: "protoc-gen-grpc-swift",
@@ -187,6 +180,7 @@ let package = Package(
         .grpc,
         .cgrpcZlib,
         .protocGenGRPCSwift,
+        .helloWorldClient
     ],
     dependencies: packageDependencies,
     targets: [
@@ -194,8 +188,8 @@ let package = Package(
         .grpc,
         .cgrpcZlib,
         .protocGenGRPCSwift,
-        .helloWorldModel,
         .helloWorldClient,
+        .helloWorldModel,
     ]
 )
 

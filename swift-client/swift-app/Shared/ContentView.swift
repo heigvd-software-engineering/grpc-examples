@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import class HelloWorldClient.HelloWorldClientGRPC
 
 struct ContentView: View {
     @State private var username: String = ""
@@ -23,7 +24,9 @@ struct ContentView: View {
             }
             
             Button(action: {
-                message = "Hello \(username). Welcome to the world"
+                let helloWorldClientGrpc = HelloWorldClientGRPC(port: 9090)
+                let response = helloWorldClientGrpc.greet(name: username)
+                message = response
             }) {
                 Text("Send")
                     .padding()
@@ -38,8 +41,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ContentView()
-        }
+        ContentView()
     }
 }
