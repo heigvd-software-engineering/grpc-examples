@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A117F20282A63670030ED54 /* HelloWorldClient in Frameworks */ = {isa = PBXBuildFile; productRef = 1A117F1F282A63670030ED54 /* HelloWorldClient */; };
+		1A117F22282A63750030ED54 /* HelloWorldClient in Frameworks */ = {isa = PBXBuildFile; productRef = 1A117F21282A63750030ED54 /* HelloWorldClient */; };
 		1A2077F5282576CC00C8E834 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2077F4282576CC00C8E834 /* Tests_iOS.swift */; };
 		1A2077F7282576CC00C8E834 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2077F6282576CC00C8E834 /* Tests_iOSLaunchTests.swift */; };
 		1A207801282576CC00C8E834 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A207800282576CC00C8E834 /* Tests_macOS.swift */; };
@@ -17,8 +19,6 @@
 		1A207807282576CC00C8E834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2077DD282576CA00C8E834 /* ContentView.swift */; };
 		1A207808282576CC00C8E834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2077DE282576CB00C8E834 /* Assets.xcassets */; };
 		1A207809282576CC00C8E834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2077DE282576CB00C8E834 /* Assets.xcassets */; };
-		1A20781C2825775900C8E834 /* HelloWorldClient in Frameworks */ = {isa = PBXBuildFile; productRef = 1A20781B2825775900C8E834 /* HelloWorldClient */; };
-		1A20781E2825776300C8E834 /* HelloWorldClient in Frameworks */ = {isa = PBXBuildFile; productRef = 1A20781D2825776300C8E834 /* HelloWorldClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A20781C2825775900C8E834 /* HelloWorldClient in Frameworks */,
+				1A117F20282A63670030ED54 /* HelloWorldClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A20781E2825776300C8E834 /* HelloWorldClient in Frameworks */,
+				1A117F22282A63750030ED54 /* HelloWorldClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +180,7 @@
 			);
 			name = "swift-app (iOS)";
 			packageProductDependencies = (
-				1A20781B2825775900C8E834 /* HelloWorldClient */,
+				1A117F1F282A63670030ED54 /* HelloWorldClient */,
 			);
 			productName = "swift-app (iOS)";
 			productReference = 1A2077E3282576CB00C8E834 /* swift-app.app */;
@@ -200,7 +200,7 @@
 			);
 			name = "swift-app (macOS)";
 			packageProductDependencies = (
-				1A20781D2825776300C8E834 /* HelloWorldClient */,
+				1A117F21282A63750030ED54 /* HelloWorldClient */,
 			);
 			productName = "swift-app (macOS)";
 			productReference = 1A2077E9282576CB00C8E834 /* swift-app.app */;
@@ -721,11 +721,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A20781B2825775900C8E834 /* HelloWorldClient */ = {
+		1A117F1F282A63670030ED54 /* HelloWorldClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HelloWorldClient;
 		};
-		1A20781D2825776300C8E834 /* HelloWorldClient */ = {
+		1A117F21282A63750030ED54 /* HelloWorldClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HelloWorldClient;
 		};
