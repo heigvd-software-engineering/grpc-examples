@@ -36,6 +36,11 @@ public protocol Helloworld_GreeterClientProtocol: GRPCClient {
     _ request: Helloworld_HelloRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Helloworld_HelloRequest, Helloworld_HelloReply>
+
+  func sayHelloAgain(
+    _ request: Helloworld_HelloRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Helloworld_HelloRequest, Helloworld_HelloReply>
 }
 
 extension Helloworld_GreeterClientProtocol {
@@ -60,12 +65,33 @@ extension Helloworld_GreeterClientProtocol {
       interceptors: self.interceptors?.makeSayHelloInterceptors() ?? []
     )
   }
+
+  /// Unary call to sayHelloAgain
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to sayHelloAgain.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func sayHelloAgain(
+    _ request: Helloworld_HelloRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Helloworld_HelloRequest, Helloworld_HelloReply> {
+    return self.makeUnaryCall(
+      path: "/helloworld.Greeter/sayHelloAgain",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makesayHelloAgainInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Helloworld_GreeterClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'sayHello'.
   func makeSayHelloInterceptors() -> [ClientInterceptor<Helloworld_HelloRequest, Helloworld_HelloReply>]
+
+  /// - Returns: Interceptors to use when invoking 'sayHelloAgain'.
+  func makesayHelloAgainInterceptors() -> [ClientInterceptor<Helloworld_HelloRequest, Helloworld_HelloReply>]
 }
 
 public final class Helloworld_GreeterClient: Helloworld_GreeterClientProtocol {
@@ -98,6 +124,8 @@ public protocol Helloworld_GreeterProvider: CallHandlerProvider {
 
   /// Sends a greeting.
   func sayHello(request: Helloworld_HelloRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Helloworld_HelloReply>
+
+  func sayHelloAgain(request: Helloworld_HelloRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Helloworld_HelloReply>
 }
 
 extension Helloworld_GreeterProvider {
@@ -119,6 +147,15 @@ extension Helloworld_GreeterProvider {
         userFunction: self.sayHello(request:context:)
       )
 
+    case "sayHelloAgain":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Helloworld_HelloRequest>(),
+        responseSerializer: ProtobufSerializer<Helloworld_HelloReply>(),
+        interceptors: self.interceptors?.makesayHelloAgainInterceptors() ?? [],
+        userFunction: self.sayHelloAgain(request:context:)
+      )
+
     default:
       return nil
     }
@@ -130,4 +167,8 @@ public protocol Helloworld_GreeterServerInterceptorFactoryProtocol {
   /// - Returns: Interceptors to use when handling 'sayHello'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeSayHelloInterceptors() -> [ServerInterceptor<Helloworld_HelloRequest, Helloworld_HelloReply>]
+
+  /// - Returns: Interceptors to use when handling 'sayHelloAgain'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makesayHelloAgainInterceptors() -> [ServerInterceptor<Helloworld_HelloRequest, Helloworld_HelloReply>]
 }

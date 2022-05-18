@@ -1,5 +1,7 @@
 # Swift client
 
+> Caution: gRPC is not officially supported for the moment.
+
 Swift-client is a demo client to communicate with a gRPC server in python.
 
 ## Prerequisite
@@ -37,3 +39,49 @@ It will use the [swift-grpc](./swift-grpc/) package to communicate with grpc.
   - Select in your `swift-grpc` package the `HelloWorldClient` library.
 
 You can now run your app from xCode!
+
+## Generate the grpc files with proto
+
+### Plugins 
+
+You will need to have the `swift-protobuf` and `grpc-swift` protoc plugins.
+
+They are available on brew (MacOS only):
+
+```sh
+brew install swift-protobuf grpc-swift
+```
+
+> For other OS follow the instruction [here](https://github.com/grpc/grpc-swift#getting-the-protoc-plugins)
+
+> The plugins name are not the same if you install it via brew or throw the source link so for the next steps be aware to change with the name of the plugins you installed
+
+### Compile
+
+For compiling the swift-protobuf files execute in your terminal ([from source directory](.)):
+
+```sh
+protoc \
+  --proto_path=./swift-grpc/Sources/HelloWorld/Model \
+  --plugin=swift-protobuf \
+  --swift_opt=Visibility=Public \
+  --swift_out=./swift-grpc/Sources/HelloWorld/Model \
+  ./swift-grpc/Sources/HelloWorld/Model/helloworld.proto
+```
+
+For compiling the swift-grpc files execute in your terminal ([from source directory](.)):
+
+```sh
+protoc \
+  --proto_path=./swift-grpc/Sources/HelloWorld/Model \
+  --plugin=swift-grpc \
+  --grpc-swift_opt=Visibility=Public \
+  --grpc-swift_out=./swift-grpc/Sources/HelloWorld/Model \
+  ./swift-grpc/Sources/HelloWorld/Model/helloworld.proto
+```
+
+You can now modified your [helloWorldClientGRPC](./swift-grpc/Sources/HelloWorld/Client/helloWorldClientGRPC.swift) with the new spec you have described in your [protoc file](./swift-grpc/Sources/HelloWorld/Model/helloworld.proto).
+
+## Documentation
+
+- [https://github.com/grpc/grpc-swift](https://github.com/grpc/grpc-swift)
