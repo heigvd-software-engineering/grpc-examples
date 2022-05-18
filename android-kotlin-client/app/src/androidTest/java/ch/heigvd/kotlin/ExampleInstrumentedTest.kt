@@ -1,4 +1,4 @@
-package ch.heigvd.android_kotlin_client
+package ch.heigvd.kotlin
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ch.heigvd.android_kotlin_client", appContext.packageName)
+        assertEquals("ch.heigvd.kotlin", appContext.packageName)
     }
 }

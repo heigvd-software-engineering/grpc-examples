@@ -14,7 +14,7 @@ android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "ch.heigvd.android_kotlin_client"
+        applicationId = "ch.heigvd.kotlin"
         minSdk = 26
         targetSdk = 32
         versionCode = 1

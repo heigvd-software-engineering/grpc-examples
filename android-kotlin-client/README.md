@@ -29,3 +29,5 @@ The easiest way to run the application in local is to run it through Android Stu
 - Don't forget to turn the wifi on your emulator.
 
 - The proto file defining the gRPC client/server is in the [proto](./app/src/main/proto) folder.
+
+> The default view in Android studio si `Android` and you want see the proto folder. You can change it into project view to see all the files.

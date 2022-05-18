@@ -1,4 +1,4 @@
-package ch.heigvd.android_kotlin_client
+package ch.heigvd.kotlin
 
 import org.junit.Test
 
