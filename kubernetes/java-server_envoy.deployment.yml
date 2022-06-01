@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-server-envoy
+  labels:
+    app: java-server-envoy
+    tier: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-server-envoy
+  template:
+    metadata:
+      labels:
+        app: java-server-envoy
+    spec:
+      containers:
+      - name: java-server
+        image: registry.gitlab.com/heigvd-software-engineering/grpc-example/java-server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+      - name: envoy
+        image: registry.gitlab.com/heigvd-software-engineering/grpc-example/envoy-grpc-web-proxy
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

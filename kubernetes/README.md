@@ -149,7 +149,13 @@ You can now communicate with this service from your local application. In this e
 
 ### Javascript client
 
-- Create a gRPC server deployment and service like the [java-server](#java-server).
+- Build the [java-server app](../java-server/README.md)
+
+- Build the docker java-server image
+
+```sh
+docker build -t java-server ../java-server
+```
 
 - Build the envoy Docker image.
 
@@ -169,12 +175,12 @@ minikube image load envoy-grpc-web-proxy
 
 > This command can take some time.
 
-- Create the envoy proxy deployment and service.
+- Create the envoy proxy and java server deployment and service.
 
 > Verify that the port setup in the [envoy.yaml](../envoy-grpc-web-proxy/envoy.yaml) is correct.
 
 ```sh
-kubectl apply -f envoy.deployment.yml -f envoy.service.yml
+kubectl apply -f java-server_envoy.deployment.yml -f java-server_envoy.service.yml
 ```
 
 - Get the envoy proxy ip and port and verify they match the one in the [grpc-client.js](../js-client/webapp/src/grpc-client.js) file.
