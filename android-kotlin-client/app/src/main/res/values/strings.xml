@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">kotlin-grpc</string>
+    <string name="prenom">Prénom</string>
+    <string name="valide">Validé</string>
+    <string name="welcome_text">Bonjour, bienvenu. Quel est votre prénom?</string>
+    <string name="server_url">http://10.0.2.2:9090</string>
+    <string name="server_response">Server response: </string>
+    <string name="send_request">Send gRPC Request</string>
+    <string name="name_hint">Name:</string>
+</resources>
