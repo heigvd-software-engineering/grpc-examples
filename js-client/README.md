@@ -69,10 +69,10 @@ cd ..
 
 > This will bundle your js file in a grpc.js file in the lib folder.
 
-4) Run an [envoy proxy](./envoy/envoy.yaml) (check the configuration match your server ports).
+4) Run an [envoy proxy](../envoy-grpc-web-proxy/envoy.yaml) (check the configuration match your server ports).
 
 ```sh
-envoy -c ./envoy/envoy.yaml
+envoy -c ../envoy-grpc-web-proxy/envoy.yaml
 ```
 
 5) Open the [index.html](./webapp/index.html) in your browser.
